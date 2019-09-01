@@ -35,7 +35,7 @@ import java.util.Locale;
 class BrowseAdapter extends RecyclerView.Adapter<BrowseViewHolder> implements Filterable {
 
 	private final static int LIMIT = Integer.MAX_VALUE;
-	private final static String PAGE_SIZE = "20";
+	private final static String PAGE_SIZE = "1000";
 
 	private DateFormat format = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.getDefault());
 
@@ -198,6 +198,17 @@ class BrowseAdapter extends RecyclerView.Adapter<BrowseViewHolder> implements Fi
 						filteredList.add(item);
 
 					}
+					else if (item.getText().toLowerCase().contains(filterPattern))
+                    {
+                        filteredList.add(item);
+                    }
+					else if (item.getPreview().toLowerCase().contains(filterPattern))
+                    {
+                        filteredList.add(item);
+                    }
+					else {
+
+                    }
 				}
 			}
 			FilterResults filterResults = new FilterResults();
